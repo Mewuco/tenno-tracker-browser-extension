@@ -1,0 +1,132 @@
+<!--
+  Tenno Tracker Extension Popup
+  
+  This is the main popup interface for the Tenno Tracker Chrome extension.
+  It provides a user interface for checking Warframe authentication status
+  and managing the connection with the main Tenno Tracker application.
+  
+  Features:
+  - GID check functionality
+  - Status display with copy capability
+  
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tenno Tracker</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #09090b;
+      color: #fafafa;
+      margin: 0;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fafafa;
+    }
+
+    button {
+      width: 100%;
+      background-color: #18181b;
+      color: #fafafa;
+      border: 1px solid #27272a;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    button:hover {
+      background-color: #27272a;
+      border-color: #3f3f46;
+    }
+
+    #status {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 14px;
+      line-height: 1.5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .copy-button {
+      background: transparent;
+      border: none;
+      padding: 4px;
+      cursor: pointer;
+      color: currentColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: auto !important;
+    }
+
+    .copy-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .copy-button svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .success {
+      background-color: #052e16;
+      color: #4ade80;
+      border: 1px solid #15803d;
+    }
+
+    .error {
+      background-color: #450a0a;
+      color: #fca5a5;
+      border: 1px solid #991b1b;
+    }
+
+    .checking {
+      background-color: #18181b;
+      color: #d4d4d8;
+      border: 1px solid #27272a;
+    }
+
+    .status-text {
+      flex: 1;
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="icons/tenno-tracker-logo.png" alt="Tenno Tracker Logo" class="logo">
+    <h2>Tenno Tracker</h2>
+  </div>
+  <button id="checkGid">Check GID</button>
+  <div id="status"></div>
+  <script src="popup.js"></script>
+</body>
+</html> 
