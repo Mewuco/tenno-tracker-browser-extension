@@ -7,7 +7,11 @@ document.getElementById('checkGid').addEventListener('click', () => {
     { url: "https://warframe.com", name: "gid" },
     (cookie) => {
       if (chrome.runtime.lastError) {
-        statusDiv.innerHTML = `<span class="status-text">Error: ${chrome.runtime.lastError.message}</span>`;
+        statusDiv.textContent = '';
+        const errorSpan = document.createElement('span');
+        errorSpan.className = 'status-text';
+        errorSpan.textContent = `Error: ${chrome.runtime.lastError.message}`;
+        statusDiv.appendChild(errorSpan);
         statusDiv.className = 'error';
         return;
       }
@@ -19,14 +23,22 @@ document.getElementById('checkGid').addEventListener('click', () => {
           </svg>
         `;
         
-        statusDiv.innerHTML = `
-          <span class="status-text">GID Cookie found: ${cookie.value}</span>
-          <button class="copy-button" title="Copy GID">${copyIcon}</button>
-        `;
+        statusDiv.textContent = '';
+        
+        const statusSpan = document.createElement('span');
+        statusSpan.className = 'status-text';
+        statusSpan.textContent = `GID Cookie found: ${cookie.value}`;
+        
+        const copyButton = document.createElement('button');
+        copyButton.className = 'copy-button';
+        copyButton.title = 'Copy GID';
+        copyButton.innerHTML = copyIcon;
+        
+        statusDiv.appendChild(statusSpan);
+        statusDiv.appendChild(copyButton);
         statusDiv.className = 'success';
 
         // Add click handler for copy button
-        const copyButton = statusDiv.querySelector('.copy-button');
         copyButton.addEventListener('click', async () => {
           try {
             await navigator.clipboard.writeText(cookie.value);
@@ -44,7 +56,11 @@ document.getElementById('checkGid').addEventListener('click', () => {
           }
         });
       } else {
-        statusDiv.innerHTML = `<span class="status-text">No GID cookie found. Please log in to Warframe.com first.</span>`;
+        statusDiv.textContent = '';
+        const errorSpan = document.createElement('span');
+        errorSpan.className = 'status-text';
+        errorSpan.textContent = 'No GID cookie found. Please log in to Warframe.com first.';
+        statusDiv.appendChild(errorSpan);
         statusDiv.className = 'error';
       }
     }

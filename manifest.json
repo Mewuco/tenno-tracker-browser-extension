@@ -2,11 +2,12 @@
     "manifest_version": 3,
     "name": "Tenno Tracker GID Fetcher",
     "version": "1.0.0",
-    "description": "A Chrome extension to help Warframe players track their GID for Tenno Tracker.",
+    "description": "A browser extension to help Warframe players track their GID for Tenno Tracker.",
     "permissions": ["cookies", "activeTab"],
     "host_permissions": ["https://warframe.com/*"],
     "background": {
-      "service_worker": "background.js"
+      "scripts": ["background.js"],
+      "persistent": false
     },
     "action": {
       "default_title": "Tenno Tracker",
@@ -23,5 +24,10 @@
       "32": "icons/icon32.png",
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
+    },
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "tenno-tracker@warframe.extension"
+      }
     }
 }

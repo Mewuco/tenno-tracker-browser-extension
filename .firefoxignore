@@ -1,0 +1,12 @@
+# Git files and directories
+.git/
+.gitignore
+
+# Development files
+.DS_Store
+*.log
+node_modules/
+
+# Documentation that might not be needed in package
+README.md
+LICENSE
